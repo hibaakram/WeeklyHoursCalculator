@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+ <title>Login Page</title>
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="hoursCalculator.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+  <!--Fontawesome CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <!--Custom styles-->
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+  <link href="http://code.jquery.com/ui/1.9.2/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+  <link href="http://trentrichardson.com/examples/timepicker/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css" />
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  <script src="http://trentrichardson.com/examples/timepicker/jquery-ui-timepicker-addon.js"></script>
+  <script type='text/javascript'>
+
+
+    $(function(){
+        
+        $("#start0").datepicker({ day: 15, month: 2, year: 2020}).val("2/15/2020");
+        $("#start1").datepicker({ day: 15, month: 2, year: 2020}).val("2/15/2020");
+        $("#start2").datepicker({ day: 15, month: 2, year: 2020}).val("2/15/2020");
+        $("#start3").datepicker({ day: 15, month: 2, year: 2020}).val("2/15/2020");
+        $("#start4").datepicker({ day: 15, month: 2, year: 2020}).val("2/15/2020");
+        $("#start5").datepicker({ day: 15, month: 2, year: 2020}).val("2/15/2020");
+        $("#start6").datepicker({ day: 15, month: 2, year: 2020}).val("2/15/2020");
+        
+        $("#workday_start0").timepicker({ hour : 8 }).val("00:00");
+        $("#workday_start1").timepicker({ hour : 8 }).val("00:00");
+        $("#workday_start2").timepicker({ hour : 8 }).val("00:00");
+        $("#workday_start3").timepicker({ hour : 8 }).val("00:00");
+        $("#workday_start4").timepicker({ hour : 8 }).val("00:00");
+        $("#workday_start5").timepicker({ hour : 8 }).val("00:00");
+        $("#workday_start6").timepicker({ hour : 8 }).val("00:00");
+
+
+        $("#workday_end0").timepicker({ hour : 17 }).val("00:00");
+        $("#workday_end1").timepicker({ hour : 17 }).val("00:00");
+        $("#workday_end2").timepicker({ hour : 17 }).val("00:00");
+        $("#workday_end3").timepicker({ hour : 17 }).val("00:00");
+        $("#workday_end4").timepicker({ hour : 17 }).val("00:00");
+        $("#workday_end5").timepicker({ hour : 17 }).val("00:00");
+        $("#workday_end6").timepicker({ hour : 17 }).val("00:00");
+      
+        // Calculate the number of hours worked
+        $("#calculate").click(function(){
+            // Are all fields complete?
+            var allFieldsComplete = $('.data input').filter(function(){ return $(this).val().toString().length == 0; }).length == 0;
+            var allFieldsComplete=true;
+            // Ensure all fields are present
+            if(allFieldsComplete)
+            {
+                // Output the number of hours worked
+                var start0 = new Date($("#start0").val());
+                var start1 = new Date($("#start1").val());
+                var start2 = new Date($("#start2").val());
+                var start3 = new Date($("#start3").val());
+                var start4 = new Date($("#start4").val());
+                var start5 = new Date($("#start5").val());
+                var start6 = new Date($("#start6").val());
+                
+                var working_start0 = new Date("1/1/0001 " + $("#workday_start0").val()).getHours() + (new Date("1/1/0001 " + $("#workday_start0").val()).getMinutes() / 60)
+                var working_start1 = new Date("1/1/0001 " + $("#workday_start1").val()).getHours() + (new Date("1/1/0001 " + $("#workday_start1").val()).getMinutes() / 60)  
+                var working_start2 = new Date("1/1/0001 " + $("#workday_start2").val()).getHours() + (new Date("1/1/0001 " + $("#workday_start2").val()).getMinutes() / 60) 
+                var working_start3 = new Date("1/1/0001 " + $("#workday_start3").val()).getHours() + (new Date("1/1/0001 " + $("#workday_start3").val()).getMinutes() / 60) 
+                var working_start4 = new Date("1/1/0001 " + $("#workday_start4").val()).getHours() + (new Date("1/1/0001 " + $("#workday_start4").val()).getMinutes() / 60) 
+                var working_start5 = new Date("1/1/0001 " + $("#workday_start5").val()).getHours() + (new Date("1/1/0001 " + $("#workday_start5").val()).getMinutes() / 60) 
+                
+
+                var working_end0 = new Date("1/1/0001 " + $("#workday_end0").val()).getHours() + (new Date("1/1/0001 " + $("#workday_end0").val()).getMinutes() / 60) ;
+                var working_end1 = new Date("1/1/0001 " + $("#workday_end1").val()).getHours() + (new Date("1/1/0001 " + $("#workday_end1").val()).getMinutes() / 60) ;
+                var working_end2 = new Date("1/1/0001 " + $("#workday_end2").val()).getHours() + (new Date("1/1/0001 " + $("#workday_end2").val()).getMinutes() / 60) ;
+                var working_end3 = new Date("1/1/0001 " + $("#workday_end3").val()).getHours() + (new Date("1/1/0001 " + $("#workday_end3").val()).getMinutes() / 60) ;
+                var working_end4 = new Date("1/1/0001 " + $("#workday_end4").val()).getHours() + (new Date("1/1/0001 " + $("#workday_end4").val()).getMinutes() / 60) ;
+                var working_end5 = new Date("1/1/0001 " + $("#workday_end5").val()).getHours() + (new Date("1/1/0001 " + $("#workday_end5").val()).getMinutes() / 60) ;
+              
+
+
+                //var includeWeekends = $("#includeWeekends").is(":checked"); 
+              
+                // Output the number of hours worked
+                time=workingHoursBetweenDates(start0,working_start0,working_end0)+workingHoursBetweenDates(start1,working_start1,working_end1)+workingHoursBetweenDates(start2,working_start2,working_end2)+workingHoursBetweenDates(start3,working_start3,working_end3)+workingHoursBetweenDates(start4,working_start4,working_end4)+workingHoursBetweenDates(start5,working_start5,working_end5)
+                alert(time);
+            }
+            else
+            {  
+                // One or more of the fields is undefined or empty
+                alert("Please ensure all fields are completed.");
+            }
+        });
+    });
+    
+    // Simple function that accepts two parameters and calculates the number of hours worked 
+function workingHoursBetweenDates(startDate, dayStart, dayEnd) {
+
+    var current = startDate;
+    // Define work range
+    var workHoursStart = dayStart;
+    var workHoursEnd = dayEnd;           
+    var difference = workHoursEnd - workHoursStart;            
+    var diff_result = new Date(difference); 
+    // Return the number of hours
+    return difference;
+ 
+}
+
+
+  </script>
+<script type="text/javascript">
+    function valueChanged()
+    {
+        if($('.include_weekends').is(":checked"))   
+            $(".start5").show();
+            $(".start6").show();
+            $(".workday_start5").show();
+            $(".workday_start6").show();
+            $(".workday_end6").show();
+            $(".workday_end6").show();
+        else
+            $(".start5").hide();
+            $(".start6").hide();
+            $(".workday_start5").hide();
+            $(".workday_start6").hide();
+            $(".workday_end6").hide();
+            $(".workday_end6").hide();
+    }
+</script>
+</head>
+<body>
+
+
+
+
+
+<div class="container">
+
+  <div class="d-flex justify-content-center h-100">
+    <div class="card" style="width: 1000px; height: 700px;">
+      <div class="card-header">
+        <h3>Working Hours Calculator</h3>
+      </div>
+      <div class="card-body">
+      
+
+<table align="center">
+    <tr>
+      <th style="color: white;">DAY</th>
+      <th style="color: white;">DATE</th>
+      <th style="color: white;">WORKDAY START</th>
+      <th style="color: white;">WORKDAY END</th>
+      <th style="color: white;">INCLUDE WEEKENDS?</th>
+    </tr>
+    <tr>
+      <th style="color: white;">Monday</th>
+      <th><input id='start0' /></th>
+      <th><input id='workday_start0' /></th>
+      <th><input id='workday_end0' /></th>
+      <th><input id='include_weekends' type='checkbox' onchange="valueChanged()" /></th>
+    </tr>
+    <tr>
+      <th style="color: white;">Tuesday</th>
+      <th><input id='start1' /></th>
+      <th><input id='workday_start1' /></th>
+      <th><input id='workday_end1' /></th>
+    </tr>
+    <tr>
+      <th style="color: white;">Wednesday</th>
+      <th><input id='start2' /></th>
+      <th><input id='workday_start2' /></th>
+      <th><input id='workday_end2' /></th>
+      
+    </tr>
+    <tr>
+      <th style="color: white;">Thursday</th>
+      <th><input id='start3' /></th>
+      <th><input id='workday_start3' /></th>
+      <th><input id='workday_end3' /></th>
+      
+    </tr>
+    <tr>
+      <th style="color: white;">Friday</th>
+      <th><input id='start4' /></th>
+      <th><input id='workday_start4' /></th>
+      <th><input id='workday_end4' /></th>
+      
+    </tr>
+    <tr>
+      <th style="color: white;">Saturday</th>
+      <th><input id='start5' /></th>
+      <th><input id='workday_start5'  /></th>
+      <th><input id='workday_end5' /></th>    
+    </tr>
+
+  </table>
+     <div style="top:600; margin-top:13%;">
+    <hr />
+<hr />
+<hr />
+  <input id='calculate' type='button' value="Calculate" class="btn float-right login_btn"> 
+</div>
+  </div>
+
+      
+    </div>
+
+</div>
+</body>
+</html>
+
